@@ -6,7 +6,7 @@ IMAGE_NAME="ghcr.io/threeplanetssoftware/apple_cloud_notes_parser"
 CONTAINER_NAME="apple_cloud_notes_parser"
 
 DATE=$(date '+%Y-%m-%d')
-OUTPUT_DIR=~/notes/Dropbox/Notes/iCloud-Notes.backups/$DATE
+OUTPUT_DIR=~/notes/Dropbox/backups/iCloud-Notes.backups/$DATE
 
 COMMAND="-f /data/NoteStore.sqlite"
 COMMAND="$COMMAND --one-output-folder"
