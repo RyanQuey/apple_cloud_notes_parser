@@ -7,6 +7,7 @@ CONTAINER_NAME="apple_cloud_notes_parser"
 
 DATE=$(date '+%Y-%m-%d')
 OUTPUT_DIR=~/notes/Dropbox/backups/iCloud-Notes.backups/$DATE
+LATEST_DIR=~/notes/Dropbox/backups/iCloud-Notes.backups/latest
 
 COMMAND="-f /data/NoteStore.sqlite"
 COMMAND="$COMMAND --one-output-folder"
@@ -42,6 +43,13 @@ docker run --rm --name \
   --volume "$OUTPUT_DIR:/app/output" \
   $IMAGE_NAME \
   $COMMAND
+
+
+# copying to `latest` dir, so I can have a nice git blame file too for all of these
+# - merging, so old files are kept alone, but new files are added. https://stackoverflow.com/a/20142456/6952495
+# - but I can just do -R, without T, since I want to overwrite old files
+mkdir -p $LATEST_DIR
+cp -R $OUTPUT_DIR $LATEST_DIR
 
 # make it easy to open the html file
 # - Note that the below overwrites
