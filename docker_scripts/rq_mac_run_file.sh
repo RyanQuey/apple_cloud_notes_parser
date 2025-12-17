@@ -48,8 +48,9 @@ docker run --rm --name \
 # copying to `latest` dir, so I can have a nice git blame file too for all of these
 # - merging, so old files are kept alone, but new files are added. https://stackoverflow.com/a/20142456/6952495
 # - but I can just do -R, without T, since I want to overwrite old files
+# - Make sure it has slash.
 mkdir -p $LATEST_DIR
-cp -R $OUTPUT_DIR $LATEST_DIR
+cp -R $OUTPUT_DIR/ $LATEST_DIR/
 
 # make it easy to open the html file
 # - Note that the below overwrites
